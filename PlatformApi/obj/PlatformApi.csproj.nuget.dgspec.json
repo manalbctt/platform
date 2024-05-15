@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\PlatformApi\\PlatformApi\\PlatformApi.csproj": {}
+    "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\PlatformApi\\PlatformApi\\PlatformApi.csproj": {
+    "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\PlatformApi\\PlatformApi\\PlatformApi.csproj",
+        "projectUniqueName": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj",
         "projectName": "PlatformApi",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\PlatformApi\\PlatformApi\\PlatformApi.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\PlatformApi\\PlatformApi\\obj\\",
+        "projectPath": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj",
+        "packagesPath": "C:\\Users\\ayoub\\.nuget\\packages\\",
+        "outputPath": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ayoub\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,18 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "IdentityModel.OidcClient": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.30, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -56,7 +68,11 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[6.6.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.35.0, )"
             }
           },
           "imports": [
@@ -78,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
