@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlatformApi.Models;
 
-namespace PlatformApi.Data
+namespace PlatformApi.Helper.Data
 {
     public class ApplicationDbContext : DbContext
     {
