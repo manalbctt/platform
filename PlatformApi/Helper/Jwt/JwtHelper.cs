@@ -33,5 +33,24 @@ namespace PlatformApi.Helper.Jwt
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public string GetUserIdFromToken(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+                // Retrieve the ID claim from the JWT token
+                var id = jwtToken?.Claims.FirstOrDefault(claim => claim.Type == "id")?.Value;
+                return id;
+            }
+            catch (Exception)
+            {
+                // Token validation failed or ID claim not found
+                // You can handle this according to your application's requirements
+                return null;
+            }
+        }
     }
 }
