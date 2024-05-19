@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlatformApi.Dtos.Request;
+using PlatformApi.Dtos.Response;
 using PlatformApi.Helper.Jwt;
 using PlatformApi.Models;
 using PlatformApi.Services.Contract;
+using System.Net;
 
 namespace PlatformApi.Controllers
 {
@@ -41,12 +43,100 @@ namespace PlatformApi.Controllers
 
             return Ok(new {token});
         }
-        [Authorize]
-        [HttpGet]
-       
-        public string hello()
+
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(VendeurRegisterRequestDto vendeurRequest)
         {
-            return "hello world";
+            var vendeur = _mapper.Map<Vendeur>(vendeurRequest);
+            await _vendeurService.RegisterVendeur(vendeur);
+            return Ok();
         }
+            
+
+        
+        [HttpGet]
+        public IActionResult get()
+        {
+            var authorizationHeader = Request.Headers["Authorization"].FirstOrDefault();
+            if (authorizationHeader != null && authorizationHeader.StartsWith("Bearer "))
+            {
+                var token = authorizationHeader.Substring("Bearer ".Length).Trim();
+                var id = _jwtHelper.GetUserIdFromToken(token);
+                if (!string.IsNullOrEmpty(id))
+                {
+                    // Use the id as needed
+                    return Ok(id);
+                }
+            }
+
+            // Token not found or ID not extracted
+            return BadRequest("Invalid token or ID not found");
+        }
+
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<VendeurResponseDto>> GetVendeur(int id)
+        {
+            try
+            {
+                var vendeur = await _vendeurService.getVendeur(id);
+                if (vendeur == null)
+                {
+                    return NotFound();
+                }
+                return Ok(_mapper.Map<VendeurResponseDto>(vendeur));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving vendeur");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateVendeur(int id , VendorUpdateDto Newvendeur )
+        {
+            try
+            {
+                var vendeur = _mapper.Map<Vendeur>(Newvendeur);
+                await _vendeurService.UpdateVendeur(id, vendeur);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error updating Client");
+            }
+        }
+
+        [HttpPut("updatePassword/{id}")]
+        public async Task<ActionResult> UpdatePasswordVendeur(int id, VendeurRequestUpdatePasswordDto newVendeur)
+        {
+            try
+            {
+                var vendeur = _mapper.Map<Vendeur>(newVendeur);
+                await _vendeurService.UpdatePasswordVendeur(id, vendeur, newVendeur.newPassword, newVendeur.ConfirmPassword);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Vendeur not found")
+                {
+                    return NotFound("Vendeur not found");
+                }
+                else if (ex.Message == "Current password is incorrect")
+                {
+                    return BadRequest("Current password is incorrect");
+                }
+                else if (ex.Message == "New password and confirmation password do not match")
+                {
+                    return BadRequest("New password and confirmation password do not match");
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error updating password");
+                }
+            }
+        }
+
     }
 }
