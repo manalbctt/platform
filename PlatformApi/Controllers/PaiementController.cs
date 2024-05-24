@@ -42,9 +42,8 @@ namespace PlatformApi.Controllers
                 var paiements = await _paiementService.GetPaiementsByVendeurId(vendeurId);
                 if (paiements == null || !paiements.Any())
                 {
-                    return NotFound($"Aucun paiement trouvé pour le vendeur avec l'ID {vendeurId}");
+                    return NotFound();
                 }
-
                 return Ok(paiements);
             }
             catch (Exception ex)

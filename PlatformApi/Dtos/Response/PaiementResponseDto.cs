@@ -18,8 +18,8 @@ namespace PlatformApi.Dtos.Response
         public string PaymentMethod { get; set; }
 
         [ForeignKey("PlanPaiement")]
-        [JsonIgnore]
         public int PlanPaiementId { get; set; }
+        public string PlanPaiementLibelle { get; set; }
         [JsonIgnore]
         public PlanPaiement PlanPaiement { get; set; }
     }
