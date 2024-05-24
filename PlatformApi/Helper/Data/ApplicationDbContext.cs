@@ -42,6 +42,7 @@ namespace PlatformApi.Helper.Data
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Paiement> paiements { get; set; }
+        public DbSet<PlanPaiement> PlanPaiement { get; set; }
        
         public DbSet<Store> stores { get; set; }
         public DbSet<Vendeur> vendeurs { get; set; }
