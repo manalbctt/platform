@@ -14,6 +14,10 @@ namespace PlatformApi.Services.Implementation
             
             this._context= context; 
         }
+        public async Task<IEnumerable<Vendeur>> GetAllVendeurs()
+        {
+            return await _context.vendeurs.ToListAsync();
+        }
 
         public async Task<Vendeur> VerifyLogin(Vendeur vendeur)
         {
