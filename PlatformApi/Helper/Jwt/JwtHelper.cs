@@ -14,13 +14,14 @@ namespace PlatformApi.Helper.Jwt
             _config = config;
         }
 
-        public string GenerateToken(string id)
+        public string GenerateToken(string id,string role)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var claims = new[]
             {
-            new Claim("id", id)
+            new Claim("id", id),
+            new Claim("role",role)
             // You can add more claims here if needed
         };
 
