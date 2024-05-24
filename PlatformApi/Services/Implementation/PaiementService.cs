@@ -25,17 +25,23 @@ namespace PlatformApi.Services.Implementation
             }
             return paiement;
         }
-        public async Task<IEnumerable<PaiementResponseDto>> GetPaiementsByVendeurId(int vendeurId)
+        public async Task<List<PaiementResponseDto>> GetPaiementsByVendeurId(int vendeurId)
         {
-            // Récupérer les paiements associés au vendeur spécifié
             var paiements = await _context.paiements
-                .Where(p => p.VendeurId == vendeurId)
-                .ToListAsync();
+            .Include(p => p.PlanPaiement)
+            .Where(p => p.VendeurId == vendeurId)
+            .ToListAsync();
 
-            // Mapper les paiements vers PaiementResponseDto
-            var paiementsDto = _mapper.Map<IEnumerable<PaiementResponseDto>>(paiements);
+            var paiementDtos = paiements.Select(p => new PaiementResponseDto
+            {
+                id_paiement = p.id_paiement,
+                datepaiement = p.datepaiement,
+                PaymentMethod = p.PaymentMethod,
+                PlanPaiementId = p.PlanPaiementId,
+                PlanPaiementLibelle = p.PlanPaiement.libelle_PlanPaimenet
+            }).ToList();
 
-            return paiementsDto;
-        } 
+            return paiementDtos;
+        }
     }
 }
