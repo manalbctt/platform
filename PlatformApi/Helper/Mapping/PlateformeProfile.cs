@@ -14,6 +14,8 @@ namespace PlatformApi.Helper.Mapping
             CreateMap<VendorUpdateDto, Vendeur>();
             CreateMap<VendeurRequestUpdatePasswordDto, Vendeur>();
             CreateMap<VendeurRegisterRequestDto, Vendeur>();
+
+            CreateMap<AdminRequestDto, Admin>();
         }
     }
 }

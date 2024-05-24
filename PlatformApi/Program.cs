@@ -47,6 +47,7 @@ builder.Services.AddScoped<JwtHelper>();
 
 
 builder.Services.AddScoped<IVendeurService, VendeurService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 // Auto Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -56,9 +57,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
     {
-        builder.AllowAnyOrigin()
+        builder.WithOrigins("http://localhost:4200", "http://localhost:4300")
                .AllowAnyMethod()
-               .AllowAnyHeader();
+               .AllowAnyHeader()
+               .AllowCredentials()
+               ;
     });
 });
 var app = builder.Build();

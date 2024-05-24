@@ -22,7 +22,7 @@ namespace PlatformApi.Services.Implementation
         public async Task<Vendeur> VerifyLogin(Vendeur vendeur)
         {
 
-            var vd=await _context.vendeurs.FirstOrDefaultAsync(v => v.email_Vendeur == vendeur.email_Vendeur && v.password == vendeur.password);
+            var vd=await _context.vendeurs.FirstOrDefaultAsync(v => v.email_Vendeur == vendeur.email_Vendeur && v.password == vendeur.password && v.verifie_compte==true);
             return vd;
         }
 
@@ -31,7 +31,7 @@ namespace PlatformApi.Services.Implementation
             return  await _context.vendeurs.FirstOrDefaultAsync(v => v.id_Vendeur == id);
         }
 
-        public async Task UpdateVendeur(int id, Vendeur vendeur)
+        public async Task UpdateVendeur(int id, Vendeur vendeur) 
         {
             var VendeurModifie = await _context.vendeurs.FirstOrDefaultAsync(p => p.id_Vendeur == id);
             VendeurModifie.nom_Venduer = vendeur.nom_Venduer;
