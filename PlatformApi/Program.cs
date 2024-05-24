@@ -47,6 +47,7 @@ builder.Services.AddScoped<JwtHelper>();
 
 
 builder.Services.AddScoped<IVendeurService, VendeurService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 // Auto Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
