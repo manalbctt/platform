@@ -16,6 +16,10 @@ namespace PlatformApi.Helper.Mapping
             CreateMap<VendeurRegisterRequestDto, Vendeur>();
 
             CreateMap<AdminRequestDto, Admin>();
+            CreateMap<PaiementRequestDto, Paiement>();
+            CreateMap<Paiement, PaiementResponseDto>();
+            CreateMap<PlanPaiementRequestDto, PlanPaiement>();
+            CreateMap<PlanPaiement, PlanPaiementResponseDto>();
         }
     }
 }
