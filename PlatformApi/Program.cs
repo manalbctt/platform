@@ -45,9 +45,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //Register Services
 builder.Services.AddScoped<JwtHelper>();
 
-
+builder.Services.AddScoped<IPaiementService, PaiementService>();
+builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+
 
 // Auto Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
