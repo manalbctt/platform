@@ -7,6 +7,7 @@ using PlatformApi.Services.Implementation;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using PlatformApi.Helper.Jwt;
+using PlatformApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 //Jwt configuration starts here
@@ -50,6 +51,9 @@ builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
+//Email
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 // Auto Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
