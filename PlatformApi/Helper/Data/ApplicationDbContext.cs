@@ -47,5 +47,6 @@ namespace PlatformApi.Helper.Data
         public DbSet<Store> stores { get; set; }
         public DbSet<Vendeur> vendeurs { get; set; }
         public DbSet<VendeurAdmin> VendeurAdmin { get; set; }
+        public DbSet<NewsLetter> newsLetters { get; set; }
     }
 }
