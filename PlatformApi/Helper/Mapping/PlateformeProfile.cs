@@ -22,6 +22,8 @@ namespace PlatformApi.Helper.Mapping
             CreateMap<PlanPaiement, PlanPaiementResponseDto>();
 
             CreateMap<EmailRequestDto, Email>();
+
+            CreateMap<NewsLetterRequestDto, NewsLetter>();
         }
     }
 }

@@ -50,6 +50,7 @@ builder.Services.AddScoped<IPaiementService, PaiementService>();
 builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<INewsLetterService, NewsLetterService>();
 
 //Email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
