@@ -62,6 +62,29 @@ namespace PlatformApi.Migrations
                     b.ToTable("Admins");
                 });
 
+            modelBuilder.Entity("PlatformApi.Models.NewsLetter", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SubscriptionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("SubscriptionStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("newsLetters");
+                });
+
             modelBuilder.Entity("PlatformApi.Models.Paiement", b =>
                 {
                     b.Property<int>("id_paiement")
