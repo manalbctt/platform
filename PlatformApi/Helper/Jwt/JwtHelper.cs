@@ -53,5 +53,24 @@ namespace PlatformApi.Helper.Jwt
                 return null;
             }
         }
+
+        public string GetUserRoleFromToken(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+
+                // Retrieve the ID claim from the JWT token
+                var role = jwtToken?.Claims.FirstOrDefault(claim => claim.Type == "role")?.Value;
+                return role;
+            }
+            catch (Exception)
+            {
+                // Token validation failed or ID claim not found
+                // You can handle this according to your application's requirements
+                return null;
+            }
+        }
     }
 }

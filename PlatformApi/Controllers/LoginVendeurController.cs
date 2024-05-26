@@ -73,8 +73,26 @@ namespace PlatformApi.Controllers
             // Token not found or ID not extracted
             return BadRequest("Invalid token or ID not found");
         }
+        [HttpGet("role")]
+        public IActionResult getRole()
+        {
+            var authorizationHeader = Request.Headers["Authorization"].FirstOrDefault();
+            if (authorizationHeader != null && authorizationHeader.StartsWith("Bearer "))
+            {
+                var token = authorizationHeader.Substring("Bearer ".Length).Trim();
+                var role = _jwtHelper.GetUserRoleFromToken(token);
+                if (!string.IsNullOrEmpty(role))
+                {
+                    // Use the role as needed
+                    return Ok(role);
+                }
+            }
 
-        
+            // Token not found or ID not extracted
+            return BadRequest("Invalid token or ID not found");
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<VendeurResponseDto>> GetVendeur(int id)
         {
