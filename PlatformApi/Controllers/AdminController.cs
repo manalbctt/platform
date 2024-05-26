@@ -31,11 +31,11 @@ namespace PlatformApi.Controllers
             var adminVerfiy = await this._adminService.VerifyLogin(admin);
             if (adminVerfiy == null)
             {
-                return NotFound();
+                return NotFound(); 
             }
 
             //generate token and add the id inside claims
-            var token = _jwtHelper.GenerateToken(admin.id_admin.ToString(),"admin");
+            var token = _jwtHelper.GenerateToken(adminVerfiy.id_admin.ToString(),"admin");
 
             return Ok(new { token });
         }
