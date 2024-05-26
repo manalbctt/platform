@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PlatformApi.Dtos.Request;
 using PlatformApi.Dtos.Response;
 using PlatformApi.Helper.Jwt;
@@ -83,8 +84,14 @@ namespace PlatformApi.Controllers
                 var role = _jwtHelper.GetUserRoleFromToken(token);
                 if (!string.IsNullOrEmpty(role))
                 {
+                    // Parse the role into a JSON object
+                    var roleObject = new { role = role };
+                    var roleJson = JsonConvert.SerializeObject(roleObject);
+
+                    // Return the JSON object
+                    return Ok(roleJson);
                     // Use the role as needed
-                    return Ok(role);
+                  //  return Ok(role);
                 }
             }
 

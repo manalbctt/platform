@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+vkdbjxtQevDPZ7iTR0pyoEW/w8HcDfM1Vx95agGXx+8/t/Ln7AK8aPX1oBZ8a5bJdQieU4bxFr5ZyJKalFcQ==",
+  "dgSpecHash": "jpsAIdci+CLwCugZNQz8Rt8+M0hl3eolfknH5zCqr09L+5/lc3oLj5GxTljtayBTwCkUd9P+Zgz4NnX9/4WB0w==",
   "success": true,
   "projectFilePath": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\ayoub\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\ayoub\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\ayoub\\.nuget\\packages\\mimekit\\4.6.0\\mimekit.4.6.0.nupkg.sha512",
+    "C:\\Users\\ayoub\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\ayoub\\.nuget\\packages\\swashbuckle.aspnetcore\\6.6.1\\swashbuckle.aspnetcore.6.6.1.nupkg.sha512",
     "C:\\Users\\ayoub\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.6.1\\swashbuckle.aspnetcore.swagger.6.6.1.nupkg.sha512",
     "C:\\Users\\ayoub\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.6.1\\swashbuckle.aspnetcore.swaggergen.6.6.1.nupkg.sha512",
