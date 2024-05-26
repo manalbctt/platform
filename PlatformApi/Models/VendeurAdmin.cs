@@ -13,5 +13,9 @@ namespace PlatformApi.Models
 
         public int VendeurId { get; set; }
 
+        public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
+        public string Action { get; set; }
+
+
     }
 }
