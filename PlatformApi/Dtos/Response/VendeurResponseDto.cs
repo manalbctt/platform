@@ -12,6 +12,8 @@ namespace PlatformApi.Dtos.Response
         public int num_telephone { get; set; }
         public string password { get; set; }
         public string ville { get; set; }
-  
+        public bool verifie_compte { get; set; }
+        public bool block { get; set; }
+
     }
 }

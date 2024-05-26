@@ -24,6 +24,8 @@ namespace PlatformApi.Helper.Mapping
             CreateMap<EmailRequestDto, Email>();
 
             CreateMap<NewsLetterRequestDto, NewsLetter>();
+
+            CreateMap<AdminVendeurRequestDto, VendeurAdmin>(); 
         }
     }
 }

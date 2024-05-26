@@ -39,5 +39,33 @@ namespace PlatformApi.Controllers
 
             return Ok(new { token });
         }
+
+        [HttpPost("validate")]
+        public async Task<IActionResult> validerVendeur(AdminVendeurRequestDto requestdto)
+        {
+            // this method valider le vendeur (change le status dans vendeur table et inserer une ligne dans la table VendeurAdmin)
+
+            var adminVendeur = _mapper.Map<VendeurAdmin>(requestdto);
+            await this._adminService.validerVendeur(adminVendeur.VendeurId);
+
+            await this._adminService.updateVendeurAdmin(adminVendeur);
+            
+
+
+               
+            return NoContent();
+
+        }
+        [HttpPost("Banned")]
+        public async Task<IActionResult> bannerVendeur(AdminVendeurRequestDto requestdto)
+        {
+            var adminVendeur = _mapper.Map<VendeurAdmin>(requestdto);
+            await this._adminService.BannerVendeurAdmin(adminVendeur);
+            await this._adminService.updateVendeurAdmin(adminVendeur);
+            return NoContent();
+
+        }
+
+
     }
 }

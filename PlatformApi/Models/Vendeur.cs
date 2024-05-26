@@ -15,6 +15,7 @@ namespace PlatformApi.Models
         public string password { get; set; }
         public string ville { get; set; }
         public bool verifie_compte {  get; set; }
+        public bool block { get; set; } = false;
         public IList<VendeurAdmin> VendeurAdmins { get; set; }
         public IList<Store> stores { get; set; }
         public IList<Paiement> Paiements { get; set; }

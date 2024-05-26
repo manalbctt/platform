@@ -34,6 +34,8 @@ namespace PlatformApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving vendeurs");
             }
         }
+        
+        
 
     }
 }
