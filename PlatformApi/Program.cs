@@ -8,6 +8,7 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using PlatformApi.Helper.Jwt;
 using PlatformApi.Models;
+using PlatformApi.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 //Jwt configuration starts here
@@ -38,6 +39,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSignalR();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
@@ -64,10 +67,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
     {
-        builder.WithOrigins("http://localhost:4200", "http://localhost:4300")
+        builder.WithOrigins("http://localhost:4200", "http://localhost:4300", "http://localhost:4301", "http://localhost:4302")
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials()
+               .SetIsOriginAllowed((host)=>true)
                ;
     });
 });
@@ -79,13 +83,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
 // Enable CORS
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
+app.MapHub<userHub>("chatHub");
 app.MapControllers();
+
 
 app.Run();
