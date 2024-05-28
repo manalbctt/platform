@@ -18,7 +18,7 @@ namespace PlatformApi.Helper.Data
            
 
             modelBuilder.Entity<VendeurAdmin>()
-                .HasKey(sc => new { sc.VendeurId, sc.AdminId });
+                .HasKey(sc => new { sc.VendeurId, sc.AdminId,sc.ModifiedAt });
 
             modelBuilder.Entity<VendeurAdmin>()
                 .HasOne(sc => sc.vendeur)
@@ -29,6 +29,8 @@ namespace PlatformApi.Helper.Data
                 .HasOne(sc => sc.admin)
                 .WithMany(c => c.VendeurAdmins)
                 .HasForeignKey(sc => sc.AdminId);
+
+            
 
            
            
@@ -42,9 +44,11 @@ namespace PlatformApi.Helper.Data
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Paiement> paiements { get; set; }
+        public DbSet<PlanPaiement> PlanPaiement { get; set; }
        
         public DbSet<Store> stores { get; set; }
         public DbSet<Vendeur> vendeurs { get; set; }
         public DbSet<VendeurAdmin> VendeurAdmin { get; set; }
+        public DbSet<NewsLetter> newsLetters { get; set; }
     }
 }

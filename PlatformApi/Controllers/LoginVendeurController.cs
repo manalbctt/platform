@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PlatformApi.Dtos.Request;
 using PlatformApi.Dtos.Response;
 using PlatformApi.Helper.Jwt;
@@ -73,8 +74,32 @@ namespace PlatformApi.Controllers
             // Token not found or ID not extracted
             return BadRequest("Invalid token or ID not found");
         }
+        [HttpGet("role")]
+        public IActionResult getRole()
+        {
+            var authorizationHeader = Request.Headers["Authorization"].FirstOrDefault();
+            if (authorizationHeader != null && authorizationHeader.StartsWith("Bearer "))
+            {
+                var token = authorizationHeader.Substring("Bearer ".Length).Trim();
+                var role = _jwtHelper.GetUserRoleFromToken(token);
+                if (!string.IsNullOrEmpty(role))
+                {
+                    // Parse the role into a JSON object
+                    var roleObject = new { role = role };
+                    var roleJson = JsonConvert.SerializeObject(roleObject);
 
-        
+                    // Return the JSON object
+                    return Ok(roleJson);
+                    // Use the role as needed
+                  //  return Ok(role);
+                }
+            }
+
+            // Token not found or ID not extracted
+            return BadRequest("Invalid token or ID not found");
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<VendeurResponseDto>> GetVendeur(int id)
         {
