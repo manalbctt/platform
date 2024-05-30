@@ -11,7 +11,7 @@ namespace PlatformApi.Models
         public string nom_store { get; set; }
         public string description { get; set; }
         public string urlstore {  get; set; }
-        public String UrlLogo { get; set; }
+        public string UrlLogo { get; set; }
         public Vendeur? Vendeur { get; set; }
         [ForeignKey("Vendeur")]
         public int VendeurId { get; set; }

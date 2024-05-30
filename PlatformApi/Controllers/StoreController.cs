@@ -4,8 +4,8 @@ using PlatformApi.Models;
 using PlatformApi.Services.Contract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-
-
+using PlatformApi.Dtos.Request;
+using AutoMapper;
 
 namespace PlatformApi.Controllers
 {
@@ -14,15 +14,19 @@ namespace PlatformApi.Controllers
     public class StoreController : ControllerBase
     {
         private readonly IStoreService _storeService;
+        private readonly IMapper _mapper;
 
-        public StoreController(IStoreService storeService)
+        public StoreController(IStoreService storeService, IMapper mapper)
         {
             _storeService = storeService;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStore([FromBody] Store store)
+        public async Task<IActionResult> CreateStore(StoreRequestDto storerequestdto)
         {
+            var store = _mapper.Map<Store>(storerequestdto);
+
             if (store == null)
             {
                 return BadRequest("Store is null");
