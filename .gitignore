@@ -132,3 +132,4 @@ coverage.*
 
 # Others
 *.tmp
+PlatformApi/appsettings.json

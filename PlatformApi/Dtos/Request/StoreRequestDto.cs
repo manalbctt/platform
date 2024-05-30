@@ -7,13 +7,11 @@ namespace PlatformApi.Dtos.Request
 {
     public class StoreRequestDto
     {
-        public DateTime dateCreation { get; set; }
+        public DateTime dateCreation { get; set; } = System.DateTime.Now;
         public string nom_store { get; set; }
         public string description { get; set; }
         public string urlstore { get; set; }
-        [JsonIgnore]
-        public Vendeur? Vendeur { get; set; }
-        [ForeignKey("Vendeur")]
+        public string UrlLogo { get; set; }
         public int VendeurId { get; set; }
     }
 }
