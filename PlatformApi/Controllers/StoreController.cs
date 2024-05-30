@@ -36,5 +36,16 @@ namespace PlatformApi.Controllers
 
             return Ok("Store created successfully");
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getStoreUrl(int id)
+        {
+            Store st = await this._storeService.GetStoreUrl(id);
+            if (st == null)
+            {
+                return NotFound();
+            }
+            return Ok(st.urlstore);
+        }
     }
 }
