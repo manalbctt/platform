@@ -6,5 +6,6 @@ namespace PlatformApi.Services.Contract
     {
         Task<bool> CreateStoreAsync(Store store);
         bool IsLogoValid(string urlLogo);
+        Task<Store> GetStoreUrl(int id);
     }
 }
