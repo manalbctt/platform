@@ -9,6 +9,7 @@ namespace PlatformApi.Services.Implementation
     {
         private readonly ApplicationDbContext _context;
 
+
         public StoreService(ApplicationDbContext context)
         {
             _context = context;
@@ -29,7 +30,13 @@ namespace PlatformApi.Services.Implementation
         public bool IsLogoValid(string urlLogo)
         {
             return urlLogo.EndsWith(".png", StringComparison.OrdinalIgnoreCase);
+
         }
 
+        public async Task<Store> GetStoreUrl(int id)
+        {
+            return await this._context.stores.FirstOrDefaultAsync(v => v.id_store == id);
+
+        }
     }
 }
