@@ -30,7 +30,7 @@ namespace PlatformApi.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(VendeurRequestDto requestDto)
-        {
+        {                                                                                                                             
             var vendeur = _mapper.Map<Vendeur>(requestDto);
 
             var vendeurVerfiy = await this._vendeurService.VerifyLogin(vendeur);

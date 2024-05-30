@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PlatformApi.Models;
 using PlatformApi.Services.Contract;
 using Microsoft.EntityFrameworkCore;
@@ -12,22 +13,28 @@ namespace PlatformApi.Controllers
     [ApiController]
     public class StoreController : ControllerBase
     {
-        private readonly IStoreService store;
-        public StoreController(IStoreService store)
+        private readonly IStoreService _storeService;
+
+        public StoreController(IStoreService storeService)
         {
-            this.store = store;
+            _storeService = storeService;
         }
 
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> getStoreUrl(int id)
+        [HttpPost]
+        public async Task<IActionResult> CreateStore([FromBody] Store store)
         {
-            Store st =await this.store.GetStoreUrl(id);
-            if (st == null)
+            if (store == null)
             {
-                return NotFound();
+                return BadRequest("Store is null");
             }
-            return Ok(st.urlstore);
+
+            bool isCreated = await _storeService.CreateStoreAsync(store);
+            if (!isCreated)
+            {
+                return BadRequest("Invalid logo format. Only .png files are allowed.");
+            }
+
+            return Ok("Store created successfully");
         }
     }
 }

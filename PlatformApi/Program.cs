@@ -48,7 +48,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 );
 //Register Services
 builder.Services.AddScoped<JwtHelper>();
-
+builder.Services.AddScoped<IStoreService, StoreService>();
 builder.Services.AddScoped<IPaiementService, PaiementService>();
 builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();

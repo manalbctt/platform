@@ -4,6 +4,7 @@ namespace PlatformApi.Services.Contract
 {
     public interface IStoreService
     {
-        Task<Store> GetStoreUrl(int id);
+        Task<bool> CreateStoreAsync(Store store);
+        bool IsLogoValid(string urlLogo);
     }
 }

@@ -1,5 +1,134 @@
+# .gitignore for an ASP.NET Core 6 Web API project in Visual Studio
+
+# Ignore Visual Studio temporary files, build results, and
+# User-specific files
+.vscode/
 .vs/
+*.user
 *.suo
-*.dtbcache.v2
-*.metadata.v7.bin
-*.projects.v7.bin
+*.userosscache
+*.sln.docstates
+
+# Ignore build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Ignore NuGet packages
+*.nupkg
+# The packages folder can be ignored if NuGet restore is used to install packages
+# Enable "nuget.org" (or your preferred package sources) as Package Source for the solution
+packages/
+
+# Ignore all Build results
+project.lock.json
+project.fragment.lock.json
+
+# Ignore NPM packages
+node_modules/
+
+# Ignore the publish output folder
+publish/
+publishoutput/
+
+# Ignore Rider project files
+.idea/
+
+# Ignore coverage results
+coverage/
+*.coverage
+*.coveragexml
+
+# Ignore database files
+*.mdf
+*.ldf
+
+# Ignore IIS Express SSL certificates
+/.vs/config/applicationhost.config
+
+# DotNetCore
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Logs
+*.log
+logs/
+
+# IDE specific
+*.sw?
+*.un~
+.idea/
+.idea/*
+*.sublime-*
+*.DS_Store
+Thumbs.db
+
+# Visual Studio Code directories
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# User-specific files
+*.rsuser
+*.rsuser.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# ASP.NET Core
+wwwroot/
+wwwroot/lib/
+**/wwwroot/
+**/wwwroot/lib/
+
+# Files built by Visual Studio
+build/
+
+# Folder for unit test results
+TestResults/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.cache
+*.opencover.xml
+
+# Visual Studio temporary files
+*.tlog
+*.ipch
+*.vcxproj.user
+*.filters
+
+# Rider
+.idea/
+
+# Coverlet
+coverage.*
+
+# Others
+*.tmp
