@@ -51,5 +51,15 @@ namespace PlatformApi.Controllers
             }
             return Ok(st.urlstore);
         }
+        [HttpGet("vendor/{id}")]
+        public async Task<IActionResult> getStoreUrlByVendor(int id)
+        {
+            Store st = await this._storeService.GetStoreUrlbyVendor(id);
+            if (st == null)
+            {
+                return NotFound();
+            }
+            return Ok(st.urlstore);
+        }
     }
 }

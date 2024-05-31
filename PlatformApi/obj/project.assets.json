@@ -3689,19 +3689,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\ayoub\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\4th year\\ASP.NET\\PFA\\platform\\PlatformApi\\PlatformApi.csproj",
+      "projectUniqueName": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj",
       "projectName": "PlatformApi",
-      "projectPath": "D:\\4th year\\ASP.NET\\PFA\\platform\\PlatformApi\\PlatformApi.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\4th year\\ASP.NET\\PFA\\platform\\PlatformApi\\obj\\",
+      "projectPath": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\PlatformApi.csproj",
+      "packagesPath": "C:\\Users\\ayoub\\.nuget\\packages\\",
+      "outputPath": "D:\\pfa\\Nouveau dossier\\asp-plateform\\PlatformApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ayoub\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3797,7 +3797,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

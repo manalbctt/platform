@@ -38,5 +38,12 @@ namespace PlatformApi.Services.Implementation
             return await this._context.stores.FirstOrDefaultAsync(v => v.id_store == id);
 
         }
+        public async Task<Store> GetStoreUrlbyVendor(int idVendeur)
+        {
+            return await this._context.stores.FirstOrDefaultAsync(v => v.VendeurId==idVendeur);
+
+        }
+
+
     }
 }

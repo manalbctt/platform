@@ -42,6 +42,8 @@ namespace PlatformApi.Controllers
             //generate token and add the id inside claims
             var token = _jwtHelper.GenerateToken(vendeurVerfiy.id_Vendeur.ToString(),"user");
 
+            //if paid do vendeur // sinon user
+
             return Ok(new {token});
         }
 
