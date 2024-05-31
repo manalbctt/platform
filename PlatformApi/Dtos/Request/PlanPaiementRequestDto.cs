@@ -10,7 +10,7 @@ namespace PlatformApi.Dtos.Request
 
         public string description { get; set; }
 
-        public float prix { get; set; }
+        public decimal prix { get; set; }
 
         [JsonIgnore]
         public IList<Paiement> Paiements { get; set; }

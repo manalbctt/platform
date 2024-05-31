@@ -10,7 +10,7 @@ namespace PlatformApi.Models
 
         public string description { get; set; }
 
-        public float prix{ get; set; }
+        public decimal prix { get; set; }
 
 
         public IList<Paiement> Paiements { get; set; }

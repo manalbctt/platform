@@ -7,5 +7,6 @@ namespace PlatformApi.Services.Contract
     {
         Task<Paiement> GetPaiement(int id);
         Task<List<PaiementResponseDto>> GetPaiementsByVendeurId(int vendeurId);
+        Task <PlanPaiement>GetPlanPaiement(int planPaiementId);
     }
 }
