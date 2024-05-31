@@ -1,20 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PlatformApi.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace PlatformApi.Models
+namespace PlatformApi.Dtos.Response
 {
-    public class Store
+    public class StoreResponseDto
     {
         [Key]
         public int id_store { get; set; }
         public DateTime dateCreation { get; set; }
         public string nom_store { get; set; }
         public string description { get; set; }
-        public string urlstore {  get; set; }
         public string UrlLogo { get; set; }
-        public Vendeur? Vendeur { get; set; }
-        [ForeignKey("Vendeur")]
         public int VendeurId { get; set; }
-
     }
 }

@@ -45,9 +45,15 @@ builder.Services.AddSignalR();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"))
 );
+<<<<<<< HEAD
 
 // Register Services
 builder.Services.AddScoped<JwtHelper>();
+=======
+//Register Services
+builder.Services.AddScoped<JwtHelper>();
+builder.Services.AddScoped<IStoreService, StoreService>();
+>>>>>>> ab5f418a0b15c787e44be885e4e9567f05ff6114
 builder.Services.AddScoped<IPaiementService, PaiementService>();
 builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();
