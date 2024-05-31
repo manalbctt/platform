@@ -1,6 +1,22 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "C:\\Users\\hpoli\\platform\\PlatformApi\\PlatformApi.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hpoli\\platform\\PlatformApi\\PlatformApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hpoli\\platform\\PlatformApi\\PlatformApi.csproj",
+        "projectName": "PlatformApi",
+        "projectPath": "C:\\Users\\hpoli\\platform\\PlatformApi\\PlatformApi.csproj",
+        "packagesPath": "C:\\Users\\hpoli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hpoli\\platform\\PlatformApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hpoli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
     "D:\\4th year\\ASP.NET\\PFA\\platform\\PlatformApi\\PlatformApi.csproj": {}
   },
   "projects": {
@@ -15,6 +31,7 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> ab5f418a0b15c787e44be885e4e9567f05ff6114
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -110,7 +127,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+>>>>>>> ab5f418a0b15c787e44be885e4e9567f05ff6114
         }
       }
     }

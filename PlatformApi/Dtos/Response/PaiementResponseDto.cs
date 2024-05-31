@@ -22,5 +22,6 @@ namespace PlatformApi.Dtos.Response
         public string PlanPaiementLibelle { get; set; }
         [JsonIgnore]
         public PlanPaiement PlanPaiement { get; set; }
+        public decimal prix { get; set; }
     }
 }

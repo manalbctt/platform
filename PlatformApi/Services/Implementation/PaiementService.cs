@@ -38,10 +38,23 @@ namespace PlatformApi.Services.Implementation
                 datepaiement = p.datepaiement,
                 PaymentMethod = p.PaymentMethod,
                 PlanPaiementId = p.PlanPaiementId,
-                PlanPaiementLibelle = p.PlanPaiement.libelle_PlanPaimenet
+                PlanPaiementLibelle = p.PlanPaiement.libelle_PlanPaimenet,
+                prix = p.PlanPaiement.prix
             }).ToList();
 
             return paiementDtos;
+        }
+
+        
+
+        public async Task<PlanPaiement> GetPlanPaiement(int id)
+        {
+            var planPaiement = await _context.PlanPaiement.FindAsync(id);
+            if (planPaiement == null)
+            {
+                throw new Exception("PlanPaiement not found");
+            }
+            return planPaiement;
         }
     }
 }

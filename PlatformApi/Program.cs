@@ -9,31 +9,32 @@ using Microsoft.Extensions.DependencyInjection;
 using PlatformApi.Helper.Jwt;
 using PlatformApi.Models;
 using PlatformApi.Hubs;
+using Stripe;
+using PlatformApi.Helper.Config;
 
 var builder = WebApplication.CreateBuilder(args);
-//Jwt configuration starts here
+
+// Jwt configuration starts here
 var jwtIssuer = builder.Configuration.GetSection("Jwt:Issuer").Get<string>();
 var jwtKey = builder.Configuration.GetSection("Jwt:Key").Get<string>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
- .AddJwtBearer(options =>
- {
-     options.TokenValidationParameters = new TokenValidationParameters
-     {
-         ValidateIssuer = true,
-         ValidateAudience = true,
-         ValidateLifetime = true,
-         ValidateIssuerSigningKey = true,
-         ValidIssuer = jwtIssuer,
-         ValidAudience = jwtIssuer,
-         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
-     };
- });
-//Jwt configuration ends here
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtIssuer,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+    });
+// Jwt configuration ends here
 
-// Add services to the container.
-
-
+// Add services to the container
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -41,29 +42,38 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"))
 );
+<<<<<<< HEAD
+
+// Register Services
+builder.Services.AddScoped<JwtHelper>();
+=======
 //Register Services
 builder.Services.AddScoped<JwtHelper>();
 builder.Services.AddScoped<IStoreService, StoreService>();
+>>>>>>> ab5f418a0b15c787e44be885e4e9567f05ff6114
 builder.Services.AddScoped<IPaiementService, PaiementService>();
 builder.Services.AddScoped<IPlanPaiementService, PlanPaiementService>();
 builder.Services.AddScoped<IVendeurService, VendeurService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<INewsLetterService, NewsLetterService>();
 builder.Services.AddScoped<IStoreService, StoreService>();
+builder.Services.AddScoped<StripeService>();
 
-//Email
+// Configure Stripe settings
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Value;
+
+// Email configuration
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddTransient<IEmailService, EmailService>();
 
 // Auto Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//Add cors
+// Add CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
@@ -72,13 +82,13 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowAnyHeader()
                .AllowCredentials()
-               .SetIsOriginAllowed((host)=>true)
-               ;
+               .SetIsOriginAllowed(host => true);
     });
 });
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -89,6 +99,7 @@ else
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+
 // Enable CORS
 app.UseCors("AllowAll");
 
@@ -97,9 +108,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-
 app.MapHub<userHub>("chatHub");
 app.MapControllers();
-
 
 app.Run();
